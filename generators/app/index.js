@@ -7,7 +7,11 @@ module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
-      yosay(`Welcome to the outstanding ${chalk.red('generator-new-repo')} generator!`)
+      yosay(
+        `Welcome to the outstanding ${chalk.red(
+          'generator-new-repo'
+        )} generator!`
+      )
     );
 
     const prompts = [
