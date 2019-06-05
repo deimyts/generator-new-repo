@@ -65,6 +65,9 @@
       "prettier"
     ]
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "scripts": {
     "pretest": "eslint .",
     "test": "jest"
