@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Cameron Jones",
+      "authorEmail": "deimyts@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
