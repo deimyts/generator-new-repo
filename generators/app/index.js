@@ -8,11 +8,7 @@ const yosay = require('yosay');
 module.exports = class extends Generator {
   prompting() {
     this.log(
-      yosay(
-        `Welcome to the outstanding ${chalk.red(
-          'generator-new-repo'
-        )} generator!`
-      )
+      yosay(chalk.red('New repo, coming up!'))
     );
 
     const prompts = [
