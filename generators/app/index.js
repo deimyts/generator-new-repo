@@ -30,9 +30,10 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    if (path.basename(process.cwd()) !== this.props.name) {
-      mkdirp(this.props.name);
-      this.destinationRoot(this.props.name);
+    const name = this.props.name;
+    if (path.basename(process.cwd()) !== name) {
+      mkdirp(name);
+      this.destinationRoot(name);
     }
 
     this.fs.copy(
@@ -43,7 +44,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
-      { name: this.props.name }
+      { name }
     );
   }
 
