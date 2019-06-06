@@ -21,4 +21,15 @@ describe('generator-new-repo:app', () => {
   it('uses the project name in package.json', () => {
     assert.jsonFileContent('package.json', { name: 'testProject' })
   })
+
+  describe('when no project name is given', () => {
+    beforeAll(() => {
+      return helpers
+        .run(path.join(__dirname, '../generators/app'))
+    });
+
+    it('names the project after the current working directory', () => {
+      assert.jsonFileContent('package.json', { name: path.basename(process.cwd())})
+    })
+  });
 });

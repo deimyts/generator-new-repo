@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -19,7 +20,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'name',
         message: 'Project Name',
-        default: true
+        default: path.basename(process.cwd())
       }
     ];
 
