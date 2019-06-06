@@ -7,6 +7,7 @@ const yosay = require('yosay');
 
 module.exports = class extends Generator {
   prompting() {
+    this.cwd = path.basename(process.cwd())
     this.log(
       yosay(chalk.red('New repo, coming up!'))
     );
@@ -16,7 +17,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'name',
         message: 'Project Name',
-        default: path.basename(process.cwd())
+        default: this.cwd
       }
     ];
 
@@ -27,7 +28,7 @@ module.exports = class extends Generator {
 
   writing() {
     const name = this.props.name;
-    if (path.basename(process.cwd()) !== name) {
+    if (this.cwd !== name) {
       mkdirp(name);
       this.destinationRoot(name);
     }
@@ -54,6 +55,12 @@ module.exports = class extends Generator {
       this.destinationPath('package.json'),
       { name }
     );
+
+    this.fs.copyTpl(
+      this.templatePath('src/*'),
+      this.destinationPath('src'),
+      { name }
+    )
   }
 
   install() {

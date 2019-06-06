@@ -65,8 +65,13 @@ describe('generator-new-repo:app', () => {
       assert.fileContent('.gitignore', 'node_modules');
     });
 
-    it('uses the project name in package.json', () => {
+    it('copies the src files', () => {
+      assert.file(['src/index.js']);
+    })
+
+    it('uses the project name in package.json and in index.js', () => {
       assert.jsonFileContent('package.json', { name: projectName });
+      assert.fileContent('src/index.js', projectName);
     });
 
     afterAll(() => {
