@@ -36,7 +36,8 @@ module.exports = class extends Generator {
       '_.gitignore',
       '_jest.config.js',
       '_jest-runner-eslint.config.js',
-      '_.eslintrc.js'
+      '_.eslintrc.js',
+      '_.babelrc'
     ]
 
     configFiles
