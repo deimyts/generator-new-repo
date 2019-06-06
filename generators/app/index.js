@@ -62,9 +62,10 @@ module.exports = class extends Generator {
       { name }
     )
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('index.spec.js'),
-      this.destinationPath('__test__/index.spec.js')
+      this.destinationPath('__test__/index.spec.js'),
+      { name }
     )
   }
 
