@@ -32,30 +32,26 @@ module.exports = class extends Generator {
       this.destinationRoot(name);
     }
 
-    this.fs.copy(
-      this.templatePath('_gitignore'),
-      this.destinationPath('.gitignore')
-    );
+    const configFiles = [
+      '_.gitignore',
+      '_jest.config.js',
+      '_jest-runner-eslint.config.js',
+      '_.eslintrc.js'
+    ]
+
+    configFiles
+      .forEach(file => {
+        const newFile = file.replace('_', '')
+        this.fs.copy(
+          this.templatePath(file),
+          this.destinationPath(newFile)
+        );
+      })
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
       { name }
-    );
-
-    this.fs.copy(
-      this.templatePath('_jest.config.js'),
-      this.destinationPath('jest.config.js')
-    );
-
-    this.fs.copy(
-      this.templatePath('_jest-runner-eslint.config.js'),
-      this.destinationPath('jest-runner-eslint.config.js')
-    );
-
-    this.fs.copy(
-      this.templatePath('_eslintrc.js'),
-      this.destinationPath('.eslintrc.js')
     );
   }
 
