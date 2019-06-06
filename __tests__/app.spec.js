@@ -48,7 +48,7 @@ describe('generator-new-repo:app', () => {
 
     it('uses the current directory instead of creating a new one', () => {
       const currentDir = process.cwd();
-      const parentDir = path.join(process.cwd(), '..');
+      const parentDir = path.join(currentDir, '..');
       assert.equal(parentDir, '/tmp');
       assert.notEqual(parentDir, currentDir);
     });
