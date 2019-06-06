@@ -10,7 +10,8 @@ describe('generator-new-repo:app', () => {
       .withPrompts({ someAnswer: true });
   });
 
-  it('creates files', () => {
-    assert.file(['dummyfile.txt']);
+  it('creates and configures the .gitignore file', () => {
+    assert.file(['.gitignore']);
+    assert.fileContent('.gitignore', 'node_modules');
   });
 });
