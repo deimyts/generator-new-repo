@@ -10,12 +10,11 @@ describe('generator-new-repo:app', () => {
       .withPrompts({ someAnswer: true });
   });
 
-  it('creates and configures the .gitignore file', () => {
-    assert.file(['.gitignore']);
-    assert.fileContent('.gitignore', 'node_modules');
-  });
+  it('creates the base files', () => {
+    assert.file(['.gitignore', 'package.json']);
+  })
 
-  it('creates and configures the package.json file', () => {
-    assert.file(['package.json']);
+  it('configures the .gitignore file', () => {
+    assert.fileContent('.gitignore', 'node_modules');
   });
 });
