@@ -4,12 +4,13 @@ const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
 
 describe('generator-new-repo:app', () => {
+  const runGenerator = () => helpers.run(path.join(__dirname, '../generators/app'))
+
   describe('when a project name is provided', () => {
     const projectName = 'testProject';
 
     beforeAll(() => {
-      return helpers
-        .run(path.join(__dirname, '../generators/app'))
+      return runGenerator()
         .withPrompts({ name: projectName });
     });
 
@@ -36,7 +37,7 @@ describe('generator-new-repo:app', () => {
 
   describe('when no project name is given', () => {
     beforeAll(() => {
-      return helpers.run(path.join(__dirname, '../generators/app'));
+      return runGenerator();
     });
 
     it('names the project after the current working directory', () => {
