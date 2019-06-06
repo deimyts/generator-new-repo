@@ -5,10 +5,12 @@ const helpers = require('yeoman-test');
 
 describe('generator-new-repo:app', () => {
   describe('when a project name is provided', () => {
+    const projectName = 'testProject';
+
     beforeAll(() => {
       return helpers
         .run(path.join(__dirname, '../generators/app'))
-        .withPrompts({ name: 'testProject' });
+        .withPrompts({ name: projectName });
     });
 
     it('creates the base files', () => {
@@ -20,11 +22,11 @@ describe('generator-new-repo:app', () => {
     });
 
     it('uses the project name in package.json', () => {
-      assert.jsonFileContent('package.json', { name: 'testProject' });
+      assert.jsonFileContent('package.json', { name: projectName });
     });
 
     it('creates a folder with the same name as the project, and copies the files into it', () => {
-      assert.equal(path.basename(process.cwd()), 'testProject');
+      assert.equal(path.basename(process.cwd()), projectName);
     });
 
     afterAll(() => {
