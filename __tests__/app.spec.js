@@ -69,6 +69,10 @@ describe('generator-new-repo:app', () => {
       assert.file(['src/index.js']);
     })
 
+    it('copies the test files', () => {
+      assert.file(['__test__/index.spec.js']);
+    })
+
     it('uses the project name in package.json and in index.js', () => {
       assert.jsonFileContent('package.json', { name: projectName });
       assert.fileContent('src/index.js', projectName);

@@ -61,6 +61,11 @@ module.exports = class extends Generator {
       this.destinationPath('src/index.js'),
       { name }
     )
+
+    this.fs.copy(
+      this.templatePath('index.spec.js'),
+      this.destinationPath('__test__/index.spec.js')
+    )
   }
 
   install() {
