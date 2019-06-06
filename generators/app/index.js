@@ -42,6 +42,21 @@ module.exports = class extends Generator {
       this.destinationPath('package.json'),
       { name }
     );
+
+    this.fs.copy(
+      this.templatePath('_jest.config.js'),
+      this.destinationPath('jest.config.js')
+    );
+
+    this.fs.copy(
+      this.templatePath('_jest-runner-eslint.config.js'),
+      this.destinationPath('jest-runner-eslint.config.js')
+    );
+
+    this.fs.copy(
+      this.templatePath('_eslintrc.js'),
+      this.destinationPath('.eslintrc.js')
+    );
   }
 
   install() {

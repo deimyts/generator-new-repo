@@ -58,7 +58,7 @@ describe('generator-new-repo:app', () => {
     });
 
     it('copies the default config files', () => {
-      assert.file(['.gitignore', 'package.json']);
+      assert.file(['.gitignore', 'package.json', 'jest.config.js', 'jest-runner-eslint.config.js', '.eslintrc.js']);
     });
 
     it('configures the .gitignore file', () => {
