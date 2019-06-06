@@ -14,4 +14,8 @@ describe('generator-new-repo:app', () => {
     assert.file(['.gitignore']);
     assert.fileContent('.gitignore', 'node_modules');
   });
+
+  it('creates and configures the package.json file', () => {
+    assert.file(['package.json']);
+  });
 });
