@@ -32,8 +32,8 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    if(path.basename(process.cwd()) !== this.props.name) {
-      mkdirp(this.props.name)
+    if (path.basename(process.cwd()) !== this.props.name) {
+      mkdirp(this.props.name);
       this.destinationRoot(this.props.name);
     }
 
