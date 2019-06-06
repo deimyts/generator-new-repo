@@ -22,14 +22,33 @@ describe('generator-new-repo:app', () => {
     assert.jsonFileContent('package.json', { name: 'testProject' })
   })
 
-  describe('when no project name is given', () => {
-    beforeAll(() => {
-      return helpers
-        .run(path.join(__dirname, '../generators/app'))
-    });
+  it('creates a folder with the same name as the project, and copies the files into it', () => {
+    assert.equal(path.basename(process.cwd()), 'testProject');
+  })
 
-    it('names the project after the current working directory', () => {
-      assert.jsonFileContent('package.json', { name: path.basename(process.cwd())})
-    })
+  afterAll(() => {
+    helpers.cleanTestDirectory()
+  })
+});
+
+describe('when no project name is given', () => {
+  beforeAll(() => {
+    return helpers
+      .run(path.join(__dirname, '../generators/app'))
   });
+
+  it('names the project after the current working directory', () => {
+    assert.jsonFileContent('package.json', { name: path.basename(process.cwd())})
+  })
+
+  it('uses the current directory instead of creating a new one', () => {
+    const currentDir = process.cwd()
+    const parentDir = path.join(process.cwd(), '..')
+    assert.equal(parentDir, '/tmp')
+    assert.notEqual(parentDir, currentDir)
+  });
+
+  afterAll(() => {
+    helpers.cleanTestDirectory()
+  })
 });

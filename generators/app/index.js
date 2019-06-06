@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const mkdirp = require('mkdirp');
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -31,6 +32,11 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    if(path.basename(process.cwd()) !== this.props.name) {
+      mkdirp(this.props.name)
+      this.destinationRoot(this.props.name);
+    }
+
     this.fs.copy(
       this.templatePath('_gitignore'),
       this.destinationPath('.gitignore')
