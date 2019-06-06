@@ -7,7 +7,7 @@ describe('generator-new-repo:app', () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, '../generators/app'))
-      .withPrompts({ someAnswer: true });
+      .withPrompts({ name: 'testProject' });
   });
 
   it('creates the base files', () => {
@@ -17,4 +17,8 @@ describe('generator-new-repo:app', () => {
   it('configures the .gitignore file', () => {
     assert.fileContent('.gitignore', 'node_modules');
   });
+
+  it('uses the project name in package.json', () => {
+    assert.jsonFileContent('package.json', { name: 'testProject' })
+  })
 });

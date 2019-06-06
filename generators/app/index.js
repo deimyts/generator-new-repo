@@ -16,9 +16,9 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
+        type: 'input',
+        name: 'name',
+        message: 'Project Name',
         default: true
       }
     ];
@@ -35,9 +35,10 @@ module.exports = class extends Generator {
       this.destinationPath('.gitignore')
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('_package.json'),
-      this.destinationPath('package.json')
+      this.destinationPath('package.json'),
+      { name: this.props.name }
     );
   }
 
