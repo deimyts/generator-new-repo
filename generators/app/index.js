@@ -7,10 +7,8 @@ const yosay = require('yosay');
 
 module.exports = class extends Generator {
   prompting() {
-    this.cwd = path.basename(process.cwd())
-    this.log(
-      yosay(chalk.red('New repo, coming up!'))
-    );
+    this.cwd = path.basename(process.cwd());
+    this.log(yosay(chalk.red('New repo, coming up!')));
 
     const prompts = [
       {
@@ -39,16 +37,12 @@ module.exports = class extends Generator {
       '_jest-runner-eslint.config.js',
       '_.eslintrc.js',
       '_.babelrc'
-    ]
+    ];
 
-    configFiles
-      .forEach(file => {
-        const newFile = file.replace('_', '')
-        this.fs.copy(
-          this.templatePath(file),
-          this.destinationPath(newFile)
-        );
-      })
+    configFiles.forEach(file => {
+      const newFile = file.replace('_', '');
+      this.fs.copy(this.templatePath(file), this.destinationPath(newFile));
+    });
 
     this.fs.copyTpl(
       this.templatePath('_package.json'),
@@ -60,13 +54,13 @@ module.exports = class extends Generator {
       this.templatePath('index.js'),
       this.destinationPath('src/index.js'),
       { name }
-    )
+    );
 
     this.fs.copyTpl(
       this.templatePath('index.spec.js'),
       this.destinationPath('__test__/index.spec.js'),
       { name }
-    )
+    );
   }
 
   install() {

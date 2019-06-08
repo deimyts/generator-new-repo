@@ -58,7 +58,14 @@ describe('generator-new-repo:app', () => {
     });
 
     it('copies the default config files', () => {
-      assert.file(['.gitignore', 'package.json', 'jest.config.js', 'jest-runner-eslint.config.js', '.eslintrc.js', '.babelrc']);
+      assert.file([
+        '.gitignore',
+        'package.json',
+        'jest.config.js',
+        'jest-runner-eslint.config.js',
+        '.eslintrc.js',
+        '.babelrc'
+      ]);
     });
 
     it('configures the .gitignore file', () => {
@@ -67,11 +74,11 @@ describe('generator-new-repo:app', () => {
 
     it('copies the src files', () => {
       assert.file(['src/index.js']);
-    })
+    });
 
     it('copies the test files', () => {
       assert.file(['__test__/index.spec.js']);
-    })
+    });
 
     it('uses the project name in package.json, and in the starter src & test files', () => {
       assert.jsonFileContent('package.json', { name: projectName });
